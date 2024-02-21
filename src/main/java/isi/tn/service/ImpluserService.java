@@ -40,4 +40,29 @@ public class ImpluserService implements IuserService {
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
     }
 
+    @Override
+    public User patchUser(Long userId, User user) {
+        // Retrieve the existing user
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+
+        // Update only the provided fields
+        if (user.getEmail() != null) {
+            existingUser.setEmail(user.getEmail());
+        }
+        if (user.getPwd() != null) {
+            existingUser.setPwd(user.getPwd());
+        }
+        if (user.getFname() != null) {
+            existingUser.setFname(user.getFname());
+        }
+        if (user.getLname() != null) {
+            existingUser.setLname(user.getLname());
+        }
+
+        // Save the updated user
+        return userRepository.save(existingUser);
+    }
+
+
 }
