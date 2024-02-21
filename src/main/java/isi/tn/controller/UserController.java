@@ -26,6 +26,12 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
+    @PatchMapping("/{userId}")
+    public ResponseEntity<User> patchUser(@PathVariable Long userId, @RequestBody User user) {
+        User updatedUser = userService.updateUser(userId, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable Long userId) {
         User user = userService.getUserById(userId);
