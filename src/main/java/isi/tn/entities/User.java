@@ -13,7 +13,8 @@ import javax.persistence.ManyToMany;
 
 
 @Entity
-public class User implements Serializable {
+public class
+User implements Serializable {
     /**
      *
      */

@@ -33,17 +33,17 @@ public class ProduitController {
         return pserv.saveProduit(pro);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/produit/{id}")
     public ResponseEntity<Void> deleteProduit(@PathVariable("id") Long id) {
         pserv.deleteProduit(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/produit/{id}")
     public ResponseEntity<Produit> updateProduit(@PathVariable("id") Long id, @RequestBody Produit updatedProduit) {
         Produit updatedEntity = pserv.updateProduit(id, updatedProduit);
         return ResponseEntity.ok(updatedEntity);
     }
-    @PatchMapping("/{id}")
+    @PatchMapping("/produit/{id}")
     public ResponseEntity<Produit> patchProduit(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
         Produit patchedProduit = pserv.patchProduit(id, updates);
         return ResponseEntity.ok(patchedProduit);

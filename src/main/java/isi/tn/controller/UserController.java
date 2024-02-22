@@ -24,13 +24,13 @@ public class UserController {
     }
 
 
-    @PutMapping("/{userId}")
+    @PutMapping("/user/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
         User updatedUser = userService.updateUser(userId, user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @PatchMapping("/{userId}")
+    @PatchMapping("/user/{userId}")
     public ResponseEntity<User> patchUser(@PathVariable Long userId, @RequestBody User user) {
         User patchedUser = userService.patchUser(userId, user);
         return new ResponseEntity<>(patchedUser, HttpStatus.OK);
@@ -43,12 +43,12 @@ public class UserController {
 
     }
 
-    @PostMapping("/addusert")
+    @PostMapping("/adduser")
     public User createUser(@Valid @RequestBody User user) {
         return userService.saveUser(user);
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/user/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
 
