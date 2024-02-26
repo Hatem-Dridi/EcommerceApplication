@@ -12,6 +12,9 @@ public interface IproduitService {
     Produit saveProduit(Produit pro);
     public void deleteProduit(Long Id);
     Produit updateProduit(Long id, Produit updatedProduit);
+
     Produit patchProduit(Long id, Map<String, Object> updates);
+
+    List<Produit> findProduitsByPriceRange(double minPrice, double maxPrice);
 
 }

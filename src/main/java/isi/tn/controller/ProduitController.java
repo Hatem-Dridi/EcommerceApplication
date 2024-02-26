@@ -48,4 +48,12 @@ public class ProduitController {
         Produit patchedProduit = pserv.patchProduit(id, updates);
         return ResponseEntity.ok(patchedProduit);
     }
+
+    @GetMapping("/filter-by-price")
+    public ResponseEntity<List<Produit>> filterProduitsByPriceRange(
+            @RequestParam(name = "minPrice") double minPrice,
+            @RequestParam(name = "maxPrice") double maxPrice) {
+        List<Produit> filteredProduits = pserv.findProduitsByPriceRange(minPrice, maxPrice);
+        return ResponseEntity.ok(filteredProduits);
+    }
 }
