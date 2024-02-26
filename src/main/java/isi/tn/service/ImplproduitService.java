@@ -74,5 +74,10 @@ public class ImplproduitService implements IproduitService{
 
         return prepo.save(existingProduit); // Save and return the patched produit
     }
+
+    @Override
+    public List<Produit> findProduitsByPriceRange(double minPrice, double maxPrice) {
+        return prepo.findByPrixProduitBetween(minPrice, maxPrice);
+    }
 }
 
