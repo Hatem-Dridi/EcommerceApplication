@@ -3,6 +3,8 @@ package isi.tn.service;
 import isi.tn.entities.User;
 import isi.tn.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -81,6 +83,11 @@ public class ImpluserService implements IuserService {
 
         // Save the updated user
         return userRepository.save(existingUser);
+    }
+
+    @Override
+    public List<User> findByFirstName(String firstName) {
+        return userRepository.findByFname(firstName);
     }
 
 }

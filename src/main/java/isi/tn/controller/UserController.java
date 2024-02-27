@@ -55,4 +55,9 @@ public class UserController {
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/users/search")
+    public List<User> getUsersByFirstName(@RequestParam String fname) {
+        return userService.findByFirstName(fname);
+    }
+
 }
