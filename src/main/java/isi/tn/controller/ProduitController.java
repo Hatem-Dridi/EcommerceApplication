@@ -49,11 +49,17 @@ public class ProduitController {
         return ResponseEntity.ok(patchedProduit);
     }
 
-    @GetMapping("/filter-by-price")
+    @GetMapping("/searchPrice")
     public ResponseEntity<List<Produit>> filterProduitsByPriceRange(
             @RequestParam(name = "minPrice") double minPrice,
             @RequestParam(name = "maxPrice") double maxPrice) {
         List<Produit> filteredProduits = pserv.findProduitsByPriceRange(minPrice, maxPrice);
         return ResponseEntity.ok(filteredProduits);
+    }
+    @GetMapping("/searchName")
+    public ResponseEntity<List<Produit>> searchProduitsByName(
+            @RequestParam(name = "nomProduit") String nomProduit) {
+        List<Produit> produits = pserv.findProduitsByName(nomProduit);
+        return ResponseEntity.ok(produits);
     }
 }

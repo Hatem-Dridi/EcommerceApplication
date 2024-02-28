@@ -10,6 +10,9 @@ public interface IproduitService {
     List<Produit> findAllProduits();
 
     Produit saveProduit(Produit pro);
+
+    List<Produit> findProduitsByName(String nomProduit);
+
     public void deleteProduit(Long Id);
     Produit updateProduit(Long id, Produit updatedProduit);
 

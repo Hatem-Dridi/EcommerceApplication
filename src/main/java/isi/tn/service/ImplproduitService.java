@@ -30,6 +30,10 @@ public class ImplproduitService implements IproduitService{
         return prepo.save(pro);
     }
     @Override
+    public List<Produit> findProduitsByName(String nomProduit) {
+        return prepo.findByNomProduitContaining(nomProduit);
+    }
+    @Override
     public void deleteProduit(Long id) {
         prepo.deleteById(id);
     }
