@@ -34,6 +34,7 @@ public class Produit implements Serializable {
     private String description;
     private String marqueProduit;
     private double prixProduit;
+    private String image;
 
 
     public Produit() {
@@ -69,5 +70,12 @@ public class Produit implements Serializable {
     public void setPrixProduit(double prixProduit) {
         this.prixProduit = prixProduit;
     }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 
 }

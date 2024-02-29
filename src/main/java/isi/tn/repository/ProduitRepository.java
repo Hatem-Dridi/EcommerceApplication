@@ -7,7 +7,7 @@ import isi.tn.entities.*;
 import java.util.List;
 
 @Repository
-public interface produitRepository extends JpaRepository<Produit,Long> {
+public interface ProduitRepository extends JpaRepository<Produit,Long> {
 
     List<Produit> findByPrixProduitBetween(double minPrice, double maxPrice);
     List<Produit> findByNomProduitContaining(String nomProduit);

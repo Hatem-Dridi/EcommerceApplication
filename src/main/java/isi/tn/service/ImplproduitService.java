@@ -2,12 +2,13 @@ package isi.tn.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import isi.tn.entities.Produit;
-import isi.tn.repository.produitRepository;
+import isi.tn.repository.ProduitRepository;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -16,7 +17,7 @@ public class ImplproduitService implements IproduitService{
 
 
     @Autowired
-    produitRepository prepo;
+    ProduitRepository prepo;
 
     @Override
     public List<Produit> findAllProduits() {
@@ -82,6 +83,11 @@ public class ImplproduitService implements IproduitService{
     @Override
     public List<Produit> findProduitsByPriceRange(double minPrice, double maxPrice) {
         return prepo.findByPrixProduitBetween(minPrice, maxPrice);
+    }
+
+    @Override
+    public Optional<Produit> getProduit(Long id) {
+        return Optional.empty();
     }
 }
 
