@@ -2,6 +2,7 @@ package isi.tn.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 import isi.tn.entities.Produit;
@@ -20,4 +21,5 @@ public interface IproduitService {
 
     List<Produit> findProduitsByPriceRange(double minPrice, double maxPrice);
 
+    Optional<Produit> getProduit(Long id);
 }
