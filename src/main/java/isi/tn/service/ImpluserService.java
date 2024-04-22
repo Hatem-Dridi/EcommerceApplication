@@ -90,4 +90,9 @@ public class ImpluserService implements IuserService {
         return userRepository.findByFname(firstName);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }

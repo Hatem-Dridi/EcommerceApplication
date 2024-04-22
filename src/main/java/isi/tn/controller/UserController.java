@@ -60,4 +60,30 @@ public class UserController {
         return userService.findByFirstName(fname);
     }
 
+    /*@PostMapping("/user/login")
+    public User login(@RequestBody )*/
+    @PostMapping("/user/login")
+    public ResponseEntity<User> login(@RequestBody User loginUser) {
+        String email = loginUser.getEmail();
+        String password = loginUser.getPwd();
+
+        // Rechercher l'utilisateur dans la base de données en fonction de l'email
+        User user = userService.findByEmail(email);
+
+        if (user == null) {
+            // L'utilisateur n'existe pas
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Vérifier si le mot de passe correspond
+        if (!password.equals(user.getPwd())) {
+            // Les mots de passe ne correspondent pas
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        // Authentification réussie
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+
 }

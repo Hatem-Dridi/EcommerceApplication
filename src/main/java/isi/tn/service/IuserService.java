@@ -15,6 +15,7 @@ public interface IuserService {
     List<User> findByFirstName(String firstName);
 
     User patchUser(Long userId, User user);
+    User findByEmail(String email);
 
 }
 
