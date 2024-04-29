@@ -34,6 +34,7 @@ public class ImpluserService implements IuserService {
         existingUser.setPwd(user.getPwd());
         existingUser.setFname(user.getFname());
         existingUser.setLname(user.getLname());
+        existingUser.setImageUrl(user.getImageUrl());
 
 
         return userRepository.save(existingUser);
@@ -63,6 +64,7 @@ public class ImpluserService implements IuserService {
     }
 
     public User patchUser(Long userId, User user) {
+        System.out.println("userId = " + userId + ", user = " + user);
         // Retrieve the existing user
         User existingUser = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
@@ -86,6 +88,7 @@ public class ImpluserService implements IuserService {
         if (user.getRole() != null) {
             existingUser.setRole(user.getRole());
         }
+        System.out.println("existingUser = " + existingUser);
 
         // Save the updated user
         return userRepository.save(existingUser);

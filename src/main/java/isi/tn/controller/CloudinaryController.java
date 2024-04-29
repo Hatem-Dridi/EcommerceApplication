@@ -25,6 +25,7 @@ public class CloudinaryController {
             return null;
         }
         Map result = cloudinaryService.upload(multipartFile);
+        System.out.println("multipartFile = " + multipartFile);
         UploadResponse response = new UploadResponse( (String) result.get("original_filename"), (String) result.get("url"), (String) result.get("public_id") );
         System.out.println("response = " + response);
         return response;
