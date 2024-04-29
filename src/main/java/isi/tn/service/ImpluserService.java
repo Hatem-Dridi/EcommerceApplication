@@ -80,6 +80,12 @@ public class ImpluserService implements IuserService {
         if (user.getLname() != null) {
             existingUser.setLname(user.getLname());
         }
+        if (user.getImageUrl() != null) {
+            existingUser.setImageUrl(user.getImageUrl());
+        }
+        if (user.getRole() != null) {
+            existingUser.setRole(user.getRole());
+        }
 
         // Save the updated user
         return userRepository.save(existingUser);

@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-
-
 @Entity
 public class
 User implements Serializable {
@@ -27,6 +25,9 @@ User implements Serializable {
     private String pwd;
     private String fname;
     private String lname;
+    private String imageUrl;
+    private UserRole role;
+
 
     public void setId(Long id) {
         this.id = id;
@@ -56,7 +57,20 @@ User implements Serializable {
         this.lname = lname;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 
 }
