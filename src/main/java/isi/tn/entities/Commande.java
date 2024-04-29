@@ -2,6 +2,7 @@ package isi.tn.entities;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -14,18 +15,19 @@ public class Commande implements Serializable {
         private Long id;
         private String nomCommande;
         private Long userId;
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-    private List<Produit> products;
+    //@OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection
+    private List<ProduitCommande> products= new ArrayList<>();
 
 
     public Commande() {
         super();
     }
-    public List<Produit> getProducts() {
+    public List<ProduitCommande> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Produit> products) {
+    public void setProducts(List<ProduitCommande> products) {
         this.products = products;
     }
     public Long getId() {

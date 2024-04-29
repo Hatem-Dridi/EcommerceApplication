@@ -4,16 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -35,6 +26,10 @@ public class Produit implements Serializable {
     private String marqueProduit;
     private double prixProduit;
     private String image;
+
+    @ManyToOne
+    private Commande commande;
+
 
 
     public Produit() {
@@ -75,6 +70,13 @@ public class Produit implements Serializable {
     }
     public void setImage(String image) {
         this.image = image;
+    }
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
     }
 
 
