@@ -11,4 +11,9 @@ public interface ProduitRepository extends JpaRepository<Produit,Long> {
 
     List<Produit> findByPrixProduitBetween(double minPrice, double maxPrice);
     List<Produit> findByNomProduitContaining(String nomProduit);
+    List<Produit> findByNomProduitAndPrixProduitBetween(String nomProduit, double minPrice, double maxPrice);
+
+    List<Produit> findByNomProduitStartingWith(String nomProduit);
+
+    List<Produit> findByNomProduitStartingWithAndPrixProduitBetween(String nomProduit, double minPrice, double maxPrice);
 }

@@ -90,5 +90,17 @@ public class ImplproduitService implements IproduitService{
     public Optional<Produit> getProduit(Long id) {
         return Optional.empty();
     }
+
+    @Override
+    public List<Produit> findProduitsByNameStartingWith(String nomProduit) {
+        return prepo.findByNomProduitStartingWith(nomProduit);
+    }
+
+    @Override
+    public List<Produit> findByPrixProduitBetween(String nomProduit, double minPrice, double maxPrice) {
+        return prepo.findByNomProduitStartingWithAndPrixProduitBetween(nomProduit, minPrice, maxPrice);
+    }
+
+
 }
 

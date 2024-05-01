@@ -22,4 +22,9 @@ public interface IproduitService {
     List<Produit> findProduitsByPriceRange(double minPrice, double maxPrice);
 
     Optional<Produit> getProduit(Long id);
+    List<Produit> findProduitsByNameStartingWith(String nomProduit);
+
+
+
+    List<Produit> findByPrixProduitBetween(String nomProduit, double minPrice, double maxPrice);
 }

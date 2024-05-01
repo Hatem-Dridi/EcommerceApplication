@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import isi.tn.entities.Produit;
@@ -21,12 +22,33 @@ public class ProduitController {
     IproduitService pserv;
 
     @GetMapping("/produits")
-    public List<Produit> getAllProject() {
-        List<Produit> pro = pserv.findAllProduits();
+    public ResponseEntity<List<Produit>> getFilteredProduits(
+            @RequestParam(name = "nomProduit", required = false) String nomProduit,
+            @RequestParam(name = "minPrice", required = false) Double minPrice,
+            @RequestParam(name = "maxPrice", required = false) Double maxPrice) {
 
-        return pro;
+        List<Produit> produits;
 
+        if (StringUtils.hasText(nomProduit)) {
+            if (minPrice != null && maxPrice != null) {
+                // Filter by name and price range
+                produits = pserv.findByPrixProduitBetween(nomProduit,minPrice,maxPrice);
+            } else {
+                // Filter by name (matching the beginning of the name)
+                produits = pserv.findProduitsByNameStartingWith(nomProduit);
+            }
+        } else if (minPrice != null && maxPrice != null) {
+            // Filter by price range
+            produits = pserv.findProduitsByPriceRange(minPrice, maxPrice);
+        } else {
+            // If no filters are provided, return all products
+            produits = pserv.findAllProduits();
+        }
+
+        return ResponseEntity.ok(produits);
     }
+
+
 
     @PostMapping("/addproduit")
     public List<Produit> createProduit(@Valid @RequestBody Produit pro) {
@@ -52,19 +74,5 @@ public class ProduitController {
     public ResponseEntity<Produit> patchProduit(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
         Produit patchedProduit = pserv.patchProduit(id, updates);
         return ResponseEntity.ok(patchedProduit);
-    }
-
-    @GetMapping("/searchPrice")
-    public ResponseEntity<List<Produit>> filterProduitsByPriceRange(
-            @RequestParam(name = "minPrice") double minPrice,
-            @RequestParam(name = "maxPrice") double maxPrice) {
-        List<Produit> filteredProduits = pserv.findProduitsByPriceRange(minPrice, maxPrice);
-        return ResponseEntity.ok(filteredProduits);
-    }
-    @GetMapping("/searchName")
-    public ResponseEntity<List<Produit>> searchProduitsByName(
-            @RequestParam(name = "nomProduit") String nomProduit) {
-        List<Produit> produits = pserv.findProduitsByName(nomProduit);
-        return ResponseEntity.ok(produits);
     }
 }
