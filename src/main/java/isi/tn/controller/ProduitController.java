@@ -29,11 +29,13 @@ public class ProduitController {
     }
 
     @PostMapping("/addproduit")
-    public Produit createProduit(@Valid @RequestBody Produit pro) {
+    public List<Produit> createProduit(@Valid @RequestBody Produit pro) {
         System.out.println("pro mel service = " + pro);
-
-        return pserv.saveProduit(pro);
+        pserv.saveProduit(pro);
+        List<Produit> proo = pserv.findAllProduits();
+        return proo;
     }
+
 
     @DeleteMapping("/produit/{id}")
     public List<Produit> deleteProduit(@PathVariable("id") Long id) {
