@@ -30,6 +30,8 @@ public class ProduitController {
 
     @PostMapping("/addproduit")
     public Produit createProduit(@Valid @RequestBody Produit pro) {
+        System.out.println("pro mel service = " + pro);
+
         return pserv.saveProduit(pro);
     }
 

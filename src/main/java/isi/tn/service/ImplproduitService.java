@@ -28,6 +28,7 @@ public class ImplproduitService implements IproduitService{
     @Override
     public Produit saveProduit(Produit pro) {
         // TODO Auto-generated method stub
+        System.out.println("pro = " + pro);
         return prepo.save(pro);
     }
     @Override

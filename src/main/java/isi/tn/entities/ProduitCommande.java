@@ -11,17 +11,25 @@ public class ProduitCommande implements Serializable {
         this.id = id;
     }
 
-    public void setQunatite(int qunatite) {
-        this.qunatite = qunatite;
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
     }
 
-    public int getQunatite() {
-        return qunatite;
+    public int getQuantite() {
+        return quantite;
     }
 
     private Long id;
-    private int qunatite;
+    private int quantite;
 
     public ProduitCommande() {
+    }
+    @Override
+    public String toString() {
+        return "ProduitCommande{" +
+                "id=" + id +
+                ", qunatite='" + quantite + '\'' +
+                // Add other fields as necessary
+                '}';
     }
 }

@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class CommandeController {
 
+
     @Autowired
     private IcommandeService commandeService;
 
@@ -30,9 +31,12 @@ public class CommandeController {
         return commandeService.getAllCommandes();
     }
 
+
     @PostMapping("/addcommande")
     public ResponseEntity<Commande> createCommande(@RequestBody Commande commande) {
+        System.out.println("commande = " + commande);
         Commande savedCommande = commandeService.saveCommande(commande);
+        System.out.println("savedCommande = " + savedCommande);
         return new ResponseEntity<>(savedCommande, HttpStatus.CREATED);
     }
 
