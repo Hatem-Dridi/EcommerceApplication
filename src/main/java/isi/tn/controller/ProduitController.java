@@ -36,9 +36,10 @@ public class ProduitController {
     }
 
     @DeleteMapping("/produit/{id}")
-    public ResponseEntity<Void> deleteProduit(@PathVariable("id") Long id) {
+    public List<Produit> deleteProduit(@PathVariable("id") Long id) {
         pserv.deleteProduit(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        List<Produit> pro = pserv.findAllProduits();
+        return pro;
     }
     @PutMapping("/produit/{id}")
     public ResponseEntity<Produit> updateProduit(@PathVariable("id") Long id, @RequestBody Produit updatedProduit) {
