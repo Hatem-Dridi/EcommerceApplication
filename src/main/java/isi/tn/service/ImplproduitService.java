@@ -47,7 +47,10 @@ public class ImplproduitService implements IproduitService{
         // Update the existing produit with the provided information
         existingProduit.setNomProduit(updatedProduit.getNomProduit());
         existingProduit.setDescription(updatedProduit.getDescription());
+        existingProduit.setMarqueProduit(updatedProduit.getMarqueProduit());
         existingProduit.setPrixProduit(updatedProduit.getPrixProduit());
+        existingProduit.setImage(updatedProduit.getImage());
+        existingProduit.setQuantite(updatedProduit.getQuantite());
         // Update other fields as needed
         return prepo.save(existingProduit);
     }
@@ -71,6 +74,13 @@ public class ImplproduitService implements IproduitService{
                 case "prixProduit":
                     Double prixValue = Double.parseDouble((String) value);
                     existingProduit.setPrixProduit(prixValue);
+                    break;
+                case "image":
+                    existingProduit.setImage((String) value);
+                    break;
+                case "quantite":
+                    Integer quantiteValue = (Integer) value;
+                    existingProduit.setQuantite(quantiteValue);
                     break;
                 // Add cases for other fields as needed
                 default:

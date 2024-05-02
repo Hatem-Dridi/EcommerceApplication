@@ -26,10 +26,10 @@ public class Produit implements Serializable {
     private String marqueProduit;
     private double prixProduit;
     private String image;
+    private int quantite;
 
     @ManyToOne
     private Commande commande;
-
 
 
     public Produit() {
@@ -64,6 +64,13 @@ public class Produit implements Serializable {
     }
     public void setPrixProduit(double prixProduit) {
         this.prixProduit = prixProduit;
+    }
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
     }
     public String getImage() {
         return image;
